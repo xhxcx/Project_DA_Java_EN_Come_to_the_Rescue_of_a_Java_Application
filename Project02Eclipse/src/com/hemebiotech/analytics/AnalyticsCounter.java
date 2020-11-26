@@ -1,40 +1,36 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.List;
+import java.util.TreeMap;
 
-public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
-	public static void main(String[] args) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
+public class AnalyticsCounter implements IAnalyticsCounter{
+	public AnalyticsCounter() {
+	}
 
-		while (line != null) {
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
+	/**
+	 * Get an exhaustive and non ordered list of symptoms as parameter
+	 * parse each element of this list to build an alphabetical ordered Map with symptom as key and occurrence as value without duplicate entry
+	 *
+	 * @param symptomsList listing of all Symptoms duplicates are possible/probable
+	 * @return TreeMap with symptom as key and occurrence as value with no more duplicates
+	 */
 
-			line = reader.readLine();	// get another symptom
+	@Override
+	public TreeMap<String, Integer> listOccurrenceBySymptoms(List<String> symptomsList) {
+		TreeMap<String, Integer> occurrenceBySymptoms = new TreeMap<String, Integer>();
+		if (symptomsList != null) {
+			for (int i = 0; i < symptomsList.size(); i++) {
+				System.out.println(symptomsList.get(i));
+				if (!occurrenceBySymptoms.containsKey(symptomsList.get(i))) {
+					occurrenceBySymptoms.put(symptomsList.get(i), 1);
+				} else {
+					int count = occurrenceBySymptoms.get(symptomsList.get(i));
+					count++;
+					System.out.println(count);
+					occurrenceBySymptoms.replace(symptomsList.get(i), count);
+				}
+			}
 		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+		return occurrenceBySymptoms;
 	}
 }
