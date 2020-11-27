@@ -4,10 +4,10 @@ import java.util.Map;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class WriteSymptomData implements ISymptomWriter {
+public class WriteSymptomDataInFile implements ISymptomWriter {
     private Map<String, Integer> collectionToWrite;
 
-    public WriteSymptomData(Map<String, Integer> toWrite){
+    public WriteSymptomDataInFile(Map<String, Integer> toWrite){
         this.collectionToWrite=toWrite;
     }
 
@@ -19,7 +19,7 @@ public class WriteSymptomData implements ISymptomWriter {
      *
      */
     @Override
-    public void BuildSymptomsOutputFile(String filepath) throws Exception{
+    public void WriteSymptoms(String filepath) throws Exception{
         BufferedWriter bufferWriteOutput = null;
         try {
             FileWriter writer = new FileWriter (filepath);

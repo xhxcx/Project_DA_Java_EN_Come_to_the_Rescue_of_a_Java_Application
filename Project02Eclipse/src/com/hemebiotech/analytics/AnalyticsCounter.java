@@ -19,15 +19,15 @@ public class AnalyticsCounter implements IAnalyticsCounter{
 	public TreeMap<String, Integer> listOccurrenceBySymptoms(List<String> symptomsList) {
 		TreeMap<String, Integer> occurrenceBySymptoms = new TreeMap<String, Integer>();
 		if (symptomsList != null) {
-			for (int i = 0; i < symptomsList.size(); i++) {
-				System.out.println(symptomsList.get(i));
-				if (!occurrenceBySymptoms.containsKey(symptomsList.get(i))) {
-					occurrenceBySymptoms.put(symptomsList.get(i), 1);
+			for (String currentKey : symptomsList) {
+				System.out.println(currentKey);
+				if (!occurrenceBySymptoms.containsKey(currentKey)) {
+					occurrenceBySymptoms.put(currentKey, 1);
 				} else {
-					int count = occurrenceBySymptoms.get(symptomsList.get(i));
+					int count = occurrenceBySymptoms.get(currentKey);
 					count++;
 					System.out.println(count);
-					occurrenceBySymptoms.replace(symptomsList.get(i), count);
+					occurrenceBySymptoms.replace(currentKey, count);
 				}
 			}
 		}
