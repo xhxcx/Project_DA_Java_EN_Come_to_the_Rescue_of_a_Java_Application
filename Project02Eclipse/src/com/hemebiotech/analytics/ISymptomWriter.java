@@ -10,5 +10,5 @@ public interface ISymptomWriter {
      * Open a buffer to write in a file
      * @param filepath path of the output file
      */
-    void WriteSymptoms (String filepath) throws Exception;
+    void WriteSymptomsToFile (String filepath) throws Exception;
 }

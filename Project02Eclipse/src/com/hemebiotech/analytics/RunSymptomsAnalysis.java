@@ -26,7 +26,7 @@ public class RunSymptomsAnalysis {
         TreeMap<String, Long> occurrenceBySymptoms = mySymptomsCounter.listOccurrenceBySymptoms(symptomsList);
 
         // Generate output file from the collection
-        WriteSymptomDataInFile myWriter = new WriteSymptomDataInFile(occurrenceBySymptoms);
-        myWriter.WriteSymptoms(outputFile);
+        WriteSymptomData myWriter = new WriteSymptomData(occurrenceBySymptoms);
+        myWriter.WriteSymptomsToFile(outputFile);
     }
 }
