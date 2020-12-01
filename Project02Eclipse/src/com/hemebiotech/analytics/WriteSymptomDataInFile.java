@@ -1,14 +1,24 @@
 package com.hemebiotech.analytics;
 
-import java.util.Map;
+import java.util.TreeMap;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.Map;
+
+/**
+ * Allow to export a map in a file
+ *
+ */
 
 public class WriteSymptomDataInFile implements ISymptomWriter {
-    private Map<String, Integer> collectionToWrite;
+    private TreeMap<String, Long> collectionToWrite;
 
-    public WriteSymptomDataInFile(Map<String, Integer> toWrite){
-        this.collectionToWrite=toWrite;
+    /**
+     *
+     * @param mapToWrite sorted map to export
+     */
+    public WriteSymptomDataInFile(TreeMap<String, Long> mapToWrite){
+        this.collectionToWrite= mapToWrite;
     }
 
     /**
@@ -24,7 +34,7 @@ public class WriteSymptomDataInFile implements ISymptomWriter {
         try {
             FileWriter writer = new FileWriter (filepath);
             bufferWriteOutput = new BufferedWriter(writer);
-            for (Map.Entry<String, Integer> entry : collectionToWrite.entrySet()){
+            for (Map.Entry<String, Long> entry : collectionToWrite.entrySet()){
                 try {
                     bufferWriteOutput.write(entry.getKey() + " = " + entry.getValue());
                     bufferWriteOutput.newLine();

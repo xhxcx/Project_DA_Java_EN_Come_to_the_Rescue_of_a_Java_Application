@@ -11,5 +11,5 @@ import java.util.TreeMap;
  * @return TreeMap with symptom as key and occurrence as value with no more duplicates
  */
 public interface IAnalyticsCounter {
-    TreeMap<String, Integer> listOccurrenceBySymptoms (List<String> symptomsList);
+    TreeMap<String, Long> listOccurrenceBySymptoms (List<String> symptomsList);
 }

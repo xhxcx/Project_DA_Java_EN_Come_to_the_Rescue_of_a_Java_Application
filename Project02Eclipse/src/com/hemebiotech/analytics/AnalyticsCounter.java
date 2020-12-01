@@ -2,7 +2,12 @@ package com.hemebiotech.analytics;
 
 import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
+/**
+ * Implementation to allow analysis
+ *
+ */
 public class AnalyticsCounter implements IAnalyticsCounter{
 	public AnalyticsCounter() {
 	}
@@ -16,20 +21,10 @@ public class AnalyticsCounter implements IAnalyticsCounter{
 	 */
 
 	@Override
-	public TreeMap<String, Integer> listOccurrenceBySymptoms(List<String> symptomsList) {
-		TreeMap<String, Integer> occurrenceBySymptoms = new TreeMap<String, Integer>();
+	public TreeMap<String, Long> listOccurrenceBySymptoms(List<String> symptomsList) {
+        TreeMap<String, Long> occurrenceBySymptoms = null;
 		if (symptomsList != null) {
-			for (String currentKey : symptomsList) {
-				System.out.println(currentKey);
-				if (!occurrenceBySymptoms.containsKey(currentKey)) {
-					occurrenceBySymptoms.put(currentKey, 1);
-				} else {
-					int count = occurrenceBySymptoms.get(currentKey);
-					count++;
-					System.out.println(count);
-					occurrenceBySymptoms.replace(currentKey, count);
-				}
-			}
+            occurrenceBySymptoms = new TreeMap<String,Long>(symptomsList.stream().collect(Collectors.groupingBy(symptom -> symptom, Collectors.counting())));
 		}
 		return occurrenceBySymptoms;
 	}

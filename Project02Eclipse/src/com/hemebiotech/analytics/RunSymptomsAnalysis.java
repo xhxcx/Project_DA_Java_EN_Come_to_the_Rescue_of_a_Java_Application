@@ -23,7 +23,7 @@ public class RunSymptomsAnalysis {
 
         //Create collection with symptoms name as key and occurrence as value
         AnalyticsCounter mySymptomsCounter = new AnalyticsCounter();
-        TreeMap<String, Integer> occurrenceBySymptoms = mySymptomsCounter.listOccurrenceBySymptoms(symptomsList);
+        TreeMap<String, Long> occurrenceBySymptoms = mySymptomsCounter.listOccurrenceBySymptoms(symptomsList);
 
         // Generate output file from the collection
         WriteSymptomDataInFile myWriter = new WriteSymptomDataInFile(occurrenceBySymptoms);
