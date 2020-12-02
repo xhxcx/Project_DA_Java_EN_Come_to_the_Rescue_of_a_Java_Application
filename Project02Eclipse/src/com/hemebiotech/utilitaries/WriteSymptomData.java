@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.utilitaries;
 
 import java.util.TreeMap;
 import java.io.BufferedWriter;

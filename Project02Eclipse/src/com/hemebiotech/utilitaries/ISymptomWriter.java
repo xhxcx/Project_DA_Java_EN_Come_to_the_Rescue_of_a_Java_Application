@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.utilitaries;
 
 /**
  * Anything that will save data from the symptoms list

@@ -1,7 +1,16 @@
 package com.hemebiotech.analytics;
 
+import com.hemebiotech.utilitaries.ReadSymptomDataFromFile;
+import com.hemebiotech.utilitaries.WriteSymptomData;
+
 import java.util.List;
 import java.util.TreeMap;
+
+/**
+ * Contains the main of the application
+ * Set the path for input and output files and start the application
+ *
+ */
 
 public class RunSymptomsAnalysis {
     final static String outputFile = "result.out";
